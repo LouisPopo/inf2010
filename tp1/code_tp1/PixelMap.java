@@ -9,6 +9,8 @@
 import java.io.*;
 import java.util.StringTokenizer;
 
+import com.sun.scenario.effect.ImageData;
+
 public class PixelMap 
 {
 	public enum ImageType{BW, Gray, Color, Transparent} //enum definissant type image 
@@ -114,16 +116,39 @@ public class PixelMap
 		height = h; 
 		width = w;
 		
-		// completer
+		this.imageData = new AbstractPixel[h][w];
+
+		AbstractPixel whitePixel = null;
+
+		switch(type) {
+			case BW:
+				whitePixel = new BWPixel(false);
+				break;
+			case Gray:
+				whitePixel = new GrayPixel(0);
+				break;
+			case Color:
+				whitePixel = new ColorPixel(new int[]{250,250,250});
+				break;
+			case Transparent:
+				whitePixel = new TransparentPixel(new int[]{250,250,250,0});
+				break;
+		}
+
+		for(int i = 0; i < h; i++) {
+			for(int j = 0; j < w; j++){
+				this.imageData[i][j] = whitePixel; 
+			}	
+		}
 		
 	}
 	
 	/**
-	 * Liberer la memoire
+	 * Lib�rer la m�moire
 	 */
 	public void clearData()
 	{
-		// completer
+		this.imageData = null;
 		
 	}
 	
@@ -307,7 +332,7 @@ public class PixelMap
 								imageData[row][col] = new BWPixel( rgb[0] == 1 );
 							else if(imtype == ImageType.Gray)
 								imageData[row][col] = new GrayPixel( rgb[0] );
-							else if(imtype == ImageType.Color)
+							else //if(imtype == ImageType.Color)
 								imageData[row][col] = new ColorPixel( rgb );
 							
 							curColor = 0;
