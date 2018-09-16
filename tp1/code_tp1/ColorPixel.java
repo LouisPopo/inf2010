@@ -25,10 +25,8 @@ public class ColorPixel extends AbstractPixel
 	 */
 	ColorPixel(int[] rgb)
 	{
-		for (int i = 0; i < rgb.length; i++) {
-			this.rgb[i] = rgb[i];
-		}
-		
+		this.rgb = new int[3];
+		this.rgb = rgb;
 	}
 	
 	/**
@@ -52,8 +50,7 @@ public class ColorPixel extends AbstractPixel
 	public GrayPixel toGrayPixel()
 	{
 		int moyenne =  (this.rgb[0] + this.rgb[1] + this.rgb[2])/3;
-		GrayPixel toReturn = new GrayPixel(moyenne);
-		return toReturn;
+		return new GrayPixel(moyenne);
 		
 	}
 	

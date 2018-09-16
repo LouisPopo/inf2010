@@ -116,30 +116,41 @@ public class PixelMap
 		height = h; 
 		width = w;
 		
+		
 		this.imageData = new AbstractPixel[h][w];
-
-		AbstractPixel whitePixel = null;
 
 		switch(type) {
 			case BW:
-				whitePixel = new BWPixel(false);
+				for(int i = 0; i < h; i++) {
+					for(int j = 0; j < w; j++) {
+						this.imageData[i][j] = new BWPixel();
+					}
+				}
 				break;
 			case Gray:
-				whitePixel = new GrayPixel(0);
+				for(int i = 0; i < h; i++) {
+					for(int j = 0; j < w; j++) {
+						this.imageData[i][j] = new GrayPixel();
+					}
+				}
 				break;
 			case Color:
-				whitePixel = new ColorPixel(new int[]{250,250,250});
+				for(int i = 0; i < h; i++) {
+					for(int j = 0; j < w; j++) {
+						this.imageData[i][j] = new ColorPixel();
+					}
+				}
 				break;
 			case Transparent:
-				whitePixel = new TransparentPixel(new int[]{250,250,250,0});
+				for(int i = 0; i < h; i++) {
+					for(int j =0; j < w; j++) {
+						this.imageData[i][j] = new TransparentPixel();
+					}	
+
+				}
 				break;
 		}
 
-		for(int i = 0; i < h; i++) {
-			for(int j = 0; j < w; j++){
-				this.imageData[i][j] = whitePixel; 
-			}	
-		}
 		
 	}
 	

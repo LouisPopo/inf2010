@@ -11,9 +11,11 @@ public class Main
 	 */
 	public static void main(String[] args) 
 	{
+
 		/**
 		 * Exercice 1
-		 */
+		
+		*/
 		
 		PixelMap pmc = new PixelMap("./ed.ppm");
 		PixelMap pmg = pmc.toGrayImage();
@@ -36,8 +38,8 @@ public class Main
 		wName = "Edsger Dijkstra (Transparent)";
 		new DisplayImageWindow(wName, pmt, 200, 200);
 		
-		/**
-		 * Exercice 2
+		
+		/* Exercice 2
 		 
 		
 		PixelMapPlus pmp = new PixelMapPlus("./ed.ppm");
