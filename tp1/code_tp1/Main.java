@@ -38,7 +38,14 @@ public class Main
 		wName = "Edsger Dijkstra (Transparent)";
 		new DisplayImageWindow(wName, pmt, 200, 200);
 		
-		
+		//TESTS
+
+		PixelMapPlus pmp = new PixelMapPlus("./ed.ppm");
+		pmp.convertToBWImage();
+		pmp.translate(150, 100);
+		new DisplayImageWindow("Negatif", pmp, 250, 250);
+
+
 		/* Exercice 2
 		 
 		

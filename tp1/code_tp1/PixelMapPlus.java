@@ -1,5 +1,7 @@
 import java.awt.PageAttributes.ColorType;
 
+import javafx.scene.shape.HLineTo;
+
 /**
  * Classe PixelMapPlus
  * Image de type noir et blanc, tons de gris ou couleurs
@@ -56,7 +58,11 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void negate()
 	{
-		// completer
+		for(int i = 0; i < this.height; i++) {
+			for(int j = 0; j < this.width; j++) {
+				this.imageData[i][j] = this.imageData[i][j].Negative();
+			}
+		}
 		
 	}
 	
@@ -65,7 +71,11 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void convertToBWImage()
 	{
-		// completer
+		for(int i = 0; i < this.height; i++) {
+			for(int j = 0; j < this.width; j++) {
+				this.imageData[i][j] = this.imageData[i][j].toBWPixel();
+			}
+		}
 		
 	}
 	
@@ -74,7 +84,11 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void convertToGrayImage()
 	{
-		// completer
+		for(int i = 0; i < this.height; i++) {
+			for(int j = 0; j < this.width; j++) {
+				this.imageData[i][j] = this.imageData[i][j].toGrayPixel();
+			}
+		}
 		
 	}
 	
@@ -83,13 +97,21 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void convertToColorImage()
 	{
-		// completer
+		for(int i = 0; i < this.height; i++) {
+			for(int j = 0; j < this.width; j++) {
+				this.imageData[i][j] = this.imageData[i][j].toColorPixel();
+			}
+		}
 		
 	}
 	
 	public void convertToTransparentImage()
 	{
-		// completer
+		for(int i = 0; i < this.height; i++) {
+			for(int j = 0; j < this.width; j++) {
+				this.imageData[i][j] = this.imageData[i][j].toTransparentPixel();
+			}
+		}
 		
 	}
 	
@@ -104,7 +126,8 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 		if(w < 0 || h < 0)
 			throw new IllegalArgumentException();
 		
-		// completer
+		this.height = h;
+		this.width = w;
 		
 	}
 	
@@ -113,7 +136,14 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void insert(PixelMap pm, int row0, int col0)
 	{
-		// completer
+		int row = row0;	
+		for(int i = 0; i < pm.height; i++){
+			int col = col0;
+			for(int j = 0; j < pm.width; j++) {
+				this.imageData[row][col] = pm.imageData[i][j];
+				col++;
+			}
+		}
 		
 	}
 	
@@ -131,7 +161,17 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void translate(int rowOffset, int colOffset)
 	{
-		// completer		
+		for(int row = 0; row < this.height; row++){
+			for(int col = 0; col <this.width; col++){
+				if((rowOffset + row > 0 && rowOffset + row < this.height)
+					&&
+					(colOffset + col > 0 && colOffset + col < this.width)) {
+						this.imageData[row+rowOffset][col+colOffset] = this.imageData[row][col];
+					}
+					
+				this.imageData[row][col].toBWPixel();
+			}
+		}		
 		
 	}
 	

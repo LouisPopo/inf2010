@@ -110,48 +110,13 @@ public class PixelMap
 	{
 		if( !(h >0 && w > 0) )
 			return;
-		
+			
 		// check if must be kept 
 		imageType = type; 
 		height = h; 
 		width = w;
-		
-		
+
 		this.imageData = new AbstractPixel[h][w];
-
-		switch(type) {
-			case BW:
-				for(int i = 0; i < h; i++) {
-					for(int j = 0; j < w; j++) {
-						this.imageData[i][j] = new BWPixel();
-					}
-				}
-				break;
-			case Gray:
-				for(int i = 0; i < h; i++) {
-					for(int j = 0; j < w; j++) {
-						this.imageData[i][j] = new GrayPixel();
-					}
-				}
-				break;
-			case Color:
-				for(int i = 0; i < h; i++) {
-					for(int j = 0; j < w; j++) {
-						this.imageData[i][j] = new ColorPixel();
-					}
-				}
-				break;
-			case Transparent:
-				for(int i = 0; i < h; i++) {
-					for(int j =0; j < w; j++) {
-						this.imageData[i][j] = new TransparentPixel();
-					}	
-
-				}
-				break;
-		}
-
-		
 	}
 	
 	/**
